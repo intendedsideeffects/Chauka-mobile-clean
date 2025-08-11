@@ -1,0 +1,60 @@
+{
+  "headers": [
+    {
+      "source": "/ocean_compressed.mp4",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "video/mp4"
+        },
+        {
+          "key": "Accept-Ranges",
+          "value": "bytes"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/chaukasound.mp3",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "audio/mpeg"
+        },
+        {
+          "key": "Accept-Ranges",
+          "value": "bytes"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/oceansound.m4a",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "audio/mp4"
+        },
+        {
+          "key": "Accept-Ranges",
+          "value": "bytes"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ],
+  "functions": {
+    "app/page.jsx": {
+      "maxDuration": 30
+    }
+  }
+} 
