@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
-const MobileSection7StarBackground = ({ onStarsLoaded }) => {
+const Sec7MobileStarBackground = ({ onStarsLoaded }) => {
   const mountRef = useRef(null);
   const sceneRef = useRef(null);
   const cameraRef = useRef(null);
@@ -471,4 +471,4 @@ const MobileSection7StarBackground = ({ onStarsLoaded }) => {
   );
 };
 
-export default MobileSection7StarBackground; 
+export default Sec7MobileStarBackground; 

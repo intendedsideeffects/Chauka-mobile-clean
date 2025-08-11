@@ -1,17 +1,17 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
-import MobileSection7StarBackground from './components/MobileSection7StarBackground';
+import Sec7MobileStarBackground from './components/mobile/Sec7MobileStarBackground';
 import { responsive } from './utils/responsive';
 import TitleSection from '../components/sections/TitleSection';
 
-import Sec2SeaLevelRiseMobile from './components/Sec2SeaLevelRiseMobile';
-import Sec1SeaLevelHistoryMobile from './components/Sec1SeaLevelHistoryMobile';
-import Sec5DisasterImpactMobile from './components/Sec5DisasterImpactMobile';
-import Sec3ElevationMobile from './components/Sec3ElevationMobile';
-import Sec4PopulationRiskMobile from './components/Sec4PopulationRiskMobile';
+import Sec2MobileSeaLevelRise from './components/mobile/Sec2MobileSeaLevelRise';
+import Sec1MobileSeaLevelHistory from './components/mobile/Sec1MobileSeaLevelHistory';
+import Sec5MobileDisasterImpact from './components/mobile/Sec5MobileDisasterImpact';
+import Sec3MobileElevation from './components/mobile/Sec3MobileElevation';
+import Sec4MobilePopulationRisk from './components/mobile/Sec4MobilePopulationRisk';
 
-import OverlayTimelineMobile from './components/OverlayTimelineMobile';
+import Sec6MobileOverlayScatter from './components/mobile/Sec6MobileOverlayScatter';
 import LandingPage from '../components/LandingPageMobile';
 
 export default function TestScroll() {
@@ -262,7 +262,7 @@ export default function TestScroll() {
                   display: 'block', // Always visible
                   overflow: 'visible' // Allow scatterplot to extend fully
                 }}>
-        <OverlayTimelineMobile />
+        <Sec6MobileOverlayScatter />
       </div>
 
       {/* Test Segment Template */}
@@ -326,7 +326,7 @@ export default function TestScroll() {
             boxSizing: 'border-box',
             marginRight: responsive.isMobile() ? '10px' : '0px'
           }}>
-            <Sec1SeaLevelHistoryMobile />
+            <Sec1MobileSeaLevelHistory />
           </div>
           
           {/* Caption */}
@@ -422,7 +422,7 @@ export default function TestScroll() {
             marginLeft: responsive.isMobile() ? '10px' : '0px',
             marginRight: responsive.isMobile() ? '10px' : '0px'
           }}>
-            <Sec2SeaLevelRiseMobile />
+            <Sec2MobileSeaLevelRise />
           </div>
           
           {/* Caption */}
@@ -495,7 +495,7 @@ export default function TestScroll() {
             marginLeft: responsive.isMobile() ? '10px' : '0px',
             marginRight: responsive.isMobile() ? '10px' : '0px'
           }}>
-            <Sec3ElevationMobile />
+            <Sec3MobileElevation />
           </div>
           
           {/* Caption */}
@@ -567,7 +567,7 @@ export default function TestScroll() {
             marginLeft: responsive.isMobile() ? '10px' : '0px',
             marginRight: responsive.isMobile() ? '10px' : '0px'
           }}>
-            <Sec4PopulationRiskMobile />
+            <Sec4MobilePopulationRisk />
           </div>
           
           {/* Caption */}
@@ -641,7 +641,7 @@ export default function TestScroll() {
               marginRight: '0px',
               marginTop: responsive.isMobile() ? '6rem' : '0px'
           }}>
-            <Sec5DisasterImpactMobile />
+            <Sec5MobileDisasterImpact />
           </div>
           
           {/* Caption */}
@@ -767,7 +767,7 @@ export default function TestScroll() {
              zIndex: 20, 
              pointerEvents: 'auto'
            }}>
-             <MobileSection7StarBackground />
+             <Sec7MobileStarBackground />
              </div>
 
              {/* Click for Story Button */}

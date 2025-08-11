@@ -1,9 +1,9 @@
 import React, { useRef, useState, useEffect, useMemo, useCallback } from 'react';
 import { ScatterChart, Scatter, XAxis, YAxis, Tooltip, ResponsiveContainer, ReferenceLine, Label, ReferenceArea } from 'recharts';
-import getRegionColor from '../data/colorPointsData';
+import getRegionColor from '../../data/colorPointsData';
 import CustomTooltip from './CustomTooltip';
 import { FloatingDot } from './FloatingDot';
-import responsive from '../utils/responsive';
+import responsive from '../../utils/responsive';
 
 
 // Helper: avoid overlaps for dots

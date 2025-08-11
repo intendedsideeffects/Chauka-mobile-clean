@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { ComposedChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine, Area } from 'recharts';
-import { responsive } from '../utils/responsive';
+import { responsive } from '../../utils/responsive';
 
 const Sec1SeaLevelHistoryMobile = () => {
   const [data, setData] = useState([]);

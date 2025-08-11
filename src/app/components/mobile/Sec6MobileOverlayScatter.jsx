@@ -1,7 +1,7 @@
 "use client"
 import { useState, useEffect, useRef } from 'react';
-import PlotsScatterChart from './PlotsScatterChart';
-import responsive from '../utils/responsive';
+import PlotsScatterChart from '../shared/PlotsScatterChart';
+import responsive from '../../utils/responsive';
 
   const STATUS_HEIGHT = responsive.isMobile() ? 10000 : 7000; // Changed to 10000 for mobile
 const STATUS_WIDTH = responsive.isMobile() ? 800 : 1600; // Reduced width for mobile to prevent huge margins
@@ -32,7 +32,7 @@ const parseCSV = (csvText) => {
     });
 };
 
-const OverlayTimelineMobile = () => {
+const Sec6MobileOverlayScatter = () => {
   const [data, setData] = useState([]);
   const [timelineData, setTimelineData] = useState([]); 
   const [isLoading, setIsLoading] = useState(true);
@@ -136,7 +136,7 @@ const OverlayTimelineMobile = () => {
   );
 };
 
-export default OverlayTimelineMobile; 
+export default Sec6MobileOverlayScatter; 
 
 
 

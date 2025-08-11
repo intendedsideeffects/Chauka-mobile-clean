@@ -2,17 +2,17 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 
-import LandingPageStarBackground from './components/LandingPageStarBackground';
-import BrowserSection7StarBackground from './components/BrowserSection7StarBackground';
+import LandingPageStarBackground from './components/shared/LandingPageStarBackground';
+import Sec7BrowserStarBackground from './components/browser/Sec7BrowserStarBackground';
 import TitleSection from '../components/sections/TitleSection';
 import SegmentTemplate from '../components/sections/SegmentTemplate';
-import Sec2SeaLevelRiseBrowser from './components/browser/Sec2SeaLevelRiseBrowser';
-import Sec1SeaLevelHistoryBrowser from './components/browser/Sec1SeaLevelHistoryBrowser';
-import Sec5DisasterImpactBrowser from './components/browser/Sec5DisasterImpactBrowser';
-import Sec3ElevationBrowser from './components/browser/Sec3ElevationBrowser';
-import Sec4PopulationRiskBrowser from './components/browser/Sec4PopulationRiskBrowser';
-import DisasterVoronoiChartBrowser from './components/browser/DisasterVoronoiChartBrowser';
-import OverlayTimelineBrowser from './components/browser/OverlayTimelineBrowser';
+import Sec2BrowserSeaLevelRise from './components/browser/Sec2BrowserSeaLevelRise';
+import Sec1BrowserSeaLevelHistory from './components/browser/Sec1BrowserSeaLevelHistory';
+import Sec5BrowserDisasterImpact from './components/browser/Sec5BrowserDisasterImpact';
+import Sec3BrowserElevation from './components/browser/Sec3BrowserElevation';
+import Sec4BrowserPopulationRisk from './components/browser/Sec4BrowserPopulationRisk';
+
+import Sec6BrowserOverlayScatter from './components/browser/Sec6BrowserOverlayScatter';
 
 export default function TestScroll() {
   const [isPlaying, setIsPlaying] = useState(true);
@@ -437,7 +437,7 @@ export default function TestScroll() {
         display: 'block', // Always visible
         overflow: 'hidden' // Prevent horizontal overflow
       }}>
-        <OverlayTimelineBrowser />
+        <Sec6BrowserOverlayScatter />
       </div>
 
       {/* Test Segment Template */}
@@ -467,7 +467,7 @@ export default function TestScroll() {
           header="Sea levels held steady for a millennium,"
           headerSecondLine="until now."
           text="For most of the past millennium, sea levels remained relatively stable. But since the late 19th century, they have <strong>risen sharply</strong> due to climate-driven ocean warming and ice melt. Flooding worsens, drinking water is affected, and <strong>coastal communities are under threat</strong>."
-          chartComponent={<Sec1SeaLevelHistoryBrowser />}
+          chartComponent={<Sec1BrowserSeaLevelHistory />}
           caption="<strong>Fig 1:</strong> Global mean sea level from the year 1000 to present, shown relative to the approximate year 2000 baseline (0 cm). The projection to 2050 assumes 1.5°C to 2.0°C of global warming. Data: Kopp <a href='https://www.pnas.org/doi/10.1073/pnas.1517056113' target='_blank' style='color: #9ca3af; text-decoration: underline;'>(link)</a> and NASA <a href='http://podaac.jpl.nasa.gov/dataset/MERGED_TP_J1_OSTM_OST_ALL_V52' target='_blank' style='color: #9ca3af; text-decoration: underline;'>(link)</a>"
           styles={{
             header: {
@@ -523,7 +523,7 @@ export default function TestScroll() {
           header="Sea level is rising,"
           headerSecondLine="but not at the same rate."
           text="Sea level rise is <strong>uneven</strong>. The Pacific is a <strong>hotspot</strong>. Driven by ocean patterns, melting ice, and land movement, some islands are seeing <strong>faster-than-average</strong> increases. For nations with limited land and elevation, these trends bring real and immediate threats."
-          chartComponent={<Sec2SeaLevelRiseBrowser />}
+          chartComponent={<Sec2BrowserSeaLevelRise />}
           caption="<strong>Fig 2:</strong> Projected sea level rise scenarios, across selected Pacific Island nations. Data: Pacific Flooding Analysis Tool <a href='https://sealevel.nasa.gov/flooding-analysis-tool-pacific-islands/sea-level-rise?station-id=018&units=meters' target='_blank' style='color: #9ca3af; text-decoration: underline;'>(link)</a>"
           styles={{
             header: {
@@ -557,7 +557,7 @@ export default function TestScroll() {
           header="Impact varies across Pacific islands"
           headerSecondLine="low-laying islands are exposed more."
           text="Low elevation makes many Pacific islands especially vulnerable to sea level rise. When land sits just a few meters above the ocean, even small increases can <strong>overwhelm coastlines</strong>. With nowhere higher to go, communities face growing challenges to stay safe, maintain clean water, and protect their homes."
-          chartComponent={<Sec3ElevationBrowser />}
+          chartComponent={<Sec3BrowserElevation />}
           caption="<strong>Fig 3:</strong> Average elevation of selected Pacific Island nations and territories. Data: Wikipedia <a href='https://en.wikipedia.org/wiki/List_of_elevation_extremes_by_country?utm_source=chatgpt.com' target='_blank' style='color: #9ca3af; text-decoration: underline;'>(link)</a>"
           styles={{
             header: {
@@ -591,7 +591,7 @@ export default function TestScroll() {
           header="Many islanders live just above sea level,"
           headerSecondLine="where sea rise is already felt."
           text="Many Pacific Island nations have significant <strong>populations living in low-lying coastal areas</strong>. These communities are <strong>particularly vulnerable</strong> to sea level rise and coastal flooding, as even small increases in sea level can have dramatic impacts on their daily lives and infrastructure."
-          chartComponent={<Sec4PopulationRiskBrowser />}
+          chartComponent={<Sec4BrowserPopulationRisk />}
           caption="<strong>Fig 4:</strong> Percentage of national populations living between 0–5 meters above sea level in selected Pacific Island nations. Data: Pacific Data Hub <a href='https://pacificdata.org/data/dataset/population-living-in-low-elevation-coastal-zones-0-10m-and-0-20m-above-sea-level-df-pop-lecz' target='_blank' style='color: #9ca3af; text-decoration: underline;'>(link)</a>"
           styles={{
             header: {
@@ -627,7 +627,7 @@ export default function TestScroll() {
            header="Climate risks are rising in the Pacific."
            headerSecondLine="So is human impact."
                      text="Flooding is not the only threat. Cyclones, droughts, and heat extremes are also affecting more people across the Pacific. While impacts vary by island and year, some nations have seen sharp spikes in those affected. The trend points to growing vulnerability as the climate continues to change."
-          chartComponent={<Sec5DisasterImpactBrowser />}
+          chartComponent={<Sec5BrowserDisasterImpact />}
           caption="<strong>Fig 5:</strong> Number of people affected by climate-related hazards in the Pacific, 2005–2023. Data: Pacific Data Hub <a href='https://blue-pacific-2050.pacificdata.org/climate-change-and-disasters/indicators?outcome=1.0' target='_blank' style='color: #9ca3af; text-decoration: underline;'>(link)</a> and EM-DAT <a href='https://public.emdat.be/data' target='_blank' style='color: #9ca3af; text-decoration: underline;'>(link)</a>"
            styles={{
              header: {
@@ -769,7 +769,7 @@ This is not only a story of loss. It is also one of <strong>resilience</strong>.
              zIndex: 20, 
              pointerEvents: 'auto'
            }}>
-             <BrowserSection7StarBackground />
+             <Sec7BrowserStarBackground />
              </div>
 
              {/* Click for Story Button */}

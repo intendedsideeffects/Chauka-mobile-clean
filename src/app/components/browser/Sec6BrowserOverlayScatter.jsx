@@ -3,7 +3,7 @@ import { useState, useEffect, useMemo, useCallback, useLayoutEffect, useRef } fr
 import { debounce } from 'lodash';
 import historicalEvents from "../../data/historicalPoints"
 import birdArr from '../../data/birdArray';
-import PlotsScatterChart from '../PlotsScatterChart';
+import PlotsScatterChart from '../shared/PlotsScatterChart';
 
 const STATUS_HEIGHT = 7000; // Reduced to match segments 3-9 height
 const STATUS_WIDTH = 1600;
@@ -28,7 +28,7 @@ const parseCSV = (csvText) => {
     });
 };
 
-const OverlayTimelineBrowser = () => {
+const Sec6BrowserOverlayScatter = () => {
   const [data, setData] = useState([]);
   const [timelineData, setTimelineData] = useState([]); 
   const [isLoading, setIsLoading] = useState(true);
@@ -109,6 +109,6 @@ const OverlayTimelineBrowser = () => {
   );
 };
 
-export default OverlayTimelineBrowser; 
+export default Sec6BrowserOverlayScatter; 
 
 

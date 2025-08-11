@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect, Suspense } from 'react';
-import LandingPageStarBackground from '../app/components/LandingPageStarBackground';
+import LandingPageStarBackground from '../app/components/shared/LandingPageStarBackground';
 
 // Blue Circle Audio Player Component for Mobile
 function BlueCircleAudioPlayerMobile() {

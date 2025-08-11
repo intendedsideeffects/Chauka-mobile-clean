@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useEffect, useRef } from 'react';
-import responsive from '../utils/responsive';
+import responsive from '../../utils/responsive';
 
 const Sec3ElevationMobile = () => {
   const [highestElevationData, setHighestElevationData] = useState([]);
