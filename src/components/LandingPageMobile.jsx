@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect, Suspense } from 'react';
-import LandingPageStarBackground from '../app/components/shared/LandingPageStarBackground';
+import StarBackground from '../app/components/shared/StarBackground';
 
 // Blue Circle Audio Player Component for Mobile
 function BlueCircleAudioPlayerMobile() {
@@ -198,9 +198,9 @@ function LandingPageMobileContent({
       }}
     >
              {/* Star Globe as background */}
-       <div style={{ position: 'absolute', left: 0, top: 0, width: '100%', height: '100%', zIndex: 1 }}>
-         <LandingPageStarBackground />
-       </div>
+               <div style={{ position: 'absolute', left: 0, top: 0, width: '100%', height: '100%', zIndex: 1 }}>
+          <StarBackground variant="landing" platform="mobile" />
+        </div>
       
       {/* Ocean video overlay, only lower 30% visible, pointer-events: none */}
       <video

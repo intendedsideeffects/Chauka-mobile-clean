@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect, Suspense } from 'react';
-import LandingPageStarBackground from '../app/components/LandingPageStarBackground';
+import StarBackground from '../app/components/shared/StarBackground';
 
 // Blue Circle Audio Player Component for Browser
 function BlueCircleAudioPlayerBrowser() {
@@ -180,7 +180,7 @@ function LandingPageBrowserContent({
       scrollSnapAlign: 'start'
     }}>
       {/* Star Globe as background */}
-      <LandingPageStarBackground />
+      <StarBackground variant="landing" platform="browser" />
       
       {/* Ocean video overlay, only lower 30% visible, pointer-events: none */}
       <video
@@ -403,7 +403,7 @@ function LandingPageBrowserLoading() {
       zIndex: 1,
       isolation: 'isolate'
     }}>
-      <LandingPageStarBackground />
+      <StarBackground variant="landing" platform="browser" />
     </section>
   );
 }

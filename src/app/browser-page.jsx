@@ -2,8 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 
-import LandingPageStarBackground from './components/shared/LandingPageStarBackground';
-import Sec7BrowserStarBackground from './components/browser/Sec7BrowserStarBackground';
+import StarBackground from './components/shared/StarBackground';
 import TitleSection from '../components/sections/TitleSection';
 import SegmentTemplate from '../components/sections/SegmentTemplate';
 import Sec2BrowserSeaLevelRise from './components/browser/Sec2BrowserSeaLevelRise';
@@ -157,7 +156,7 @@ export default function TestScroll() {
         {/* Segment Number */}
 
         {/* Star Globe as background */}
-        <LandingPageStarBackground />
+        <StarBackground variant="landing" platform="browser" />
         {/* Ocean video overlay, only lower 30% visible, pointer-events: none */}
         <video
           ref={oceanVideoRef}
@@ -769,7 +768,7 @@ This is not only a story of loss. It is also one of <strong>resilience</strong>.
              zIndex: 20, 
              pointerEvents: 'auto'
            }}>
-             <Sec7BrowserStarBackground />
+             <StarBackground variant="section7" platform="browser" />
              </div>
 
              {/* Click for Story Button */}

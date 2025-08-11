@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
-import Sec7MobileStarBackground from './components/mobile/Sec7MobileStarBackground';
+import StarBackground from './components/shared/StarBackground';
 import { responsive } from './utils/responsive';
 import TitleSection from '../components/sections/TitleSection';
 
@@ -767,7 +767,7 @@ export default function TestScroll() {
              zIndex: 20, 
              pointerEvents: 'auto'
            }}>
-             <Sec7MobileStarBackground />
+             <StarBackground variant="section7" platform="mobile" />
              </div>
 
              {/* Click for Story Button */}

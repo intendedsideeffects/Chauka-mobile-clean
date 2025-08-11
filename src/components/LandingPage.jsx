@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
-import LandingPageStarBackground from '../app/components/LandingPageStarBackground';
+import StarBackground from '../app/components/shared/StarBackground';
 import { responsive } from '../app/utils/responsive';
 
 // Blue Circle Audio Player Component
@@ -201,7 +201,7 @@ export default function LandingPage({
       isolation: 'isolate' // Create new stacking context
     }}>
       {/* Star Globe as background */}
-      <LandingPageStarBackground />
+      <StarBackground variant="landing" platform="browser" />
       
       {/* Ocean video overlay, only lower 30% visible, pointer-events: none */}
       <video
