@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
-const InteractiveStarMap = () => {
+const BrowserSection7StarBackground = () => {
   const mountRef = useRef(null);
   const sceneRef = useRef(null);
   const cameraRef = useRef(null);
@@ -291,4 +291,4 @@ const InteractiveStarMap = () => {
   );
 };
 
-export default InteractiveStarMap; 
+export default BrowserSection7StarBackground; 

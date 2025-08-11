@@ -8,7 +8,7 @@ import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, LabelList } from 'rec
 // DO NOT modify BUTTON_POSITIONS without testing on multiple screen sizes
 // Current positions: Select Parameter (6px), 2°C (140px), 4°C (240px), 2050 (140px), 2100 (260px)
 // See BUTTON_POSITIONING.md for complete documentation
-const SeaLevelRiseChart = () => {
+const Sec2SeaLevelRiseBrowser = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedDegree, setSelectedDegree] = useState('2');
@@ -405,4 +405,4 @@ const SeaLevelRiseChart = () => {
   );
 };
 
-export default SeaLevelRiseChart; 
+export default Sec2SeaLevelRiseBrowser; 

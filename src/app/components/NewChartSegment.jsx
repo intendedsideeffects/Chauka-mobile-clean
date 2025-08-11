@@ -2,14 +2,14 @@
 
 import React from 'react';
 import SegmentTemplate from '../../components/sections/SegmentTemplate';
-import NewChartComponentMobile from './NewChartComponentMobile';
+import PacificDisasterImpactChartMobile from './PacificDisasterImpactChartMobile';
 
 const NewChartSegment = () => {
   return (
     <SegmentTemplate
       header=""
       text=""
-      chartComponent={<NewChartComponentMobile />}
+              chartComponent={<PacificDisasterImpactChartMobile />}
       styles={{
         // You can override default styles here if needed
         container: {

@@ -1,7 +1,7 @@
 'use client';
 import React, { useState, useEffect, useRef } from 'react';
 
-const HighestElevationChart = () => {
+const Sec3ElevationBrowser = () => {
   const [highestElevationData, setHighestElevationData] = useState([]);
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const chartAreaRef = useRef(null);
@@ -220,4 +220,4 @@ const HighestElevationChart = () => {
   );
 };
 
-export default HighestElevationChart; 
+export default Sec3ElevationBrowser; 

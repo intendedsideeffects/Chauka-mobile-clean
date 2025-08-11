@@ -1,9 +1,10 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import responsive from '../utils/responsive';
 
 
-const NewChartComponent = () => {
+const Sec5DisasterImpactMobile = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [hoveredBar, setHoveredBar] = useState(null);
@@ -132,11 +133,9 @@ const NewChartComponent = () => {
         `}
       </style>
       {/* Chart area with bars */}
-      <div className="flex items-end justify-between h-[350px] relative" style={{ 
-        transition: 'height 1.5s ease',
-        marginLeft: '80px',
-        marginRight: '20px'
-      }}>
+             <div className="flex items-end justify-between h-[350px] relative" style={{ 
+         transition: 'height 1.5s ease'
+       }}>
         {/* Horizontal gridlines */}
         {[0, 0.25, 0.5, 0.75, 1.0].map((value, index) => (
           <div 
@@ -160,7 +159,7 @@ const NewChartComponent = () => {
               style={{ 
                 top: `${350 - (value * 280) - 8}px`,
                 left: '-25px',
-                fontSize: '12px',
+                fontSize: responsive.isMobile() ? '8px' : '12px',
                 color: '#666666',
                 fontFamily: 'Helvetica World, Arial, sans-serif'
               }}
@@ -184,20 +183,20 @@ const NewChartComponent = () => {
           const shouldReduceOpacity = hoveredIndex !== null && hoveredIndex !== index;
           
           return (
-            <div 
-              key={index} 
-              className="flex flex-col items-center flex-1"
-              style={{ margin: '0 1px' }}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-              onClick={() => handleBarClick(item, index)}
-                              style={{
-                  transition: 'opacity 0.2s ease',
-                  opacity: shouldReduceOpacity ? 0.6 : 1,
-                  cursor: 'pointer',
-                  zIndex: isHovered ? 40 : 20
-                }}
-            >
+                         <div 
+               key={index} 
+               className="flex flex-col items-center flex-1"
+               style={{ 
+                 margin: '0 1px',
+                 transition: 'opacity 0.2s ease',
+                 opacity: shouldReduceOpacity ? 0.6 : 1,
+                 cursor: 'pointer',
+                 zIndex: isHovered ? 40 : 20
+               }}
+               onMouseEnter={() => setHoveredIndex(index)}
+               onMouseLeave={() => setHoveredIndex(null)}
+               onClick={() => handleBarClick(item, index)}
+             >
 
               
               {/* Bar */}
@@ -210,7 +209,7 @@ const NewChartComponent = () => {
                       bottom: `${Math.max(barHeight, 1) + 10}px`,
                       left: '50%',
                       transform: 'translateX(-50%)',
-                      fontSize: '11px',
+                      fontSize: responsive.isMobile() ? '8px' : '10px',
                       color: '#000',
                       textAlign: 'center'
                     }}
@@ -223,8 +222,8 @@ const NewChartComponent = () => {
                   style={{ 
                     height: `${Math.max(barHeight, 1)}px`,
                     width: 'calc(100% - 2px)',
-                    minWidth: '30px',
-                    maxWidth: '120px',
+                    minWidth: '15px',
+                    maxWidth: responsive.isMobile() ? '25px' : '60px',
                     minHeight: '1px',
                     transition: 'height 1.5s ease, background-color 0.2s ease, width 0.3s ease',
                     backgroundColor: isHovered ? 
@@ -247,14 +246,14 @@ const NewChartComponent = () => {
               key={year}
               className="absolute z-20" 
               style={{ 
-                bottom: '-30px',
+                bottom: responsive.isMobile() ? '-20px' : '-30px',
                 left: `${(yearIndex / (data.length - 1)) * 100}%`,
                 transform: 'translateX(-50%)',
-                fontSize: '12px',
+                fontSize: responsive.isMobile() ? '8px' : '12px',
                 color: '#666666',
                 fontFamily: 'Helvetica World, Arial, sans-serif',
                 textAlign: 'center',
-                width: '40px'
+                                 width: responsive.isMobile() ? '25px' : '40px'
               }}
             >
               {year}
@@ -264,23 +263,23 @@ const NewChartComponent = () => {
           
       </div>
       
-      {/* Y-axis label - positioned outside chart area */}
-      <div style={{
-        position: 'absolute',
-        left: '-155px',
-        top: 'calc(50% - 145px)',
-        transform: 'translateY(-50%)',
-        fontSize: '14px',
-        fontFamily: 'Helvetica World, Arial, sans-serif',
-        color: '#666666',
-        textAlign: 'right',
-        pointerEvents: 'none',
-        lineHeight: '1.2',
-        width: '200px'
-      }}>
-        PEOPLE AFFECTED BY<br/>
-        CLIMATE-RELATED HAZARDS
-      </div>
+             {/* Y-axis label - positioned outside chart area */}
+       <div style={{
+         position: 'absolute',
+         left: responsive.isMobile() ? '0px' : '10px',
+         top: 'calc(50% - 185px)',
+         transform: 'translateY(-50%)',
+         fontSize: responsive.isMobile() ? '9px' : '14px',
+         fontFamily: 'Helvetica World, Arial, sans-serif',
+         color: '#666666',
+         textAlign: 'left',
+         pointerEvents: 'none',
+         lineHeight: '1.2',
+         width: responsive.isMobile() ? '120px' : '150px'
+       }}>
+         PEOPLE AFFECTED BY<br/>
+         CLIMATE-RELATED HAZARDS
+       </div>
       
 
       
@@ -340,4 +339,4 @@ const NewChartComponent = () => {
   );
 };
 
-export default NewChartComponent; 
+export default Sec5DisasterImpactMobile; 

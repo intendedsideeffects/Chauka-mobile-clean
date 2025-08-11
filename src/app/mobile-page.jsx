@@ -1,18 +1,17 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
-import InteractiveStarGlobe from './components/InteractiveStarGlobe';
-import InteractiveStarGlobeYellow from './components/InteractiveStarGlobeYellow';
+import MobileSection7StarBackground from './components/MobileSection7StarBackground';
 import { responsive } from './utils/responsive';
 import TitleSection from '../components/sections/TitleSection';
 
-import SeaLevelRiseChartMobile from './components/SeaLevelRiseChartMobile';
-import HistoricalSeaLevelRiseExtendedMobile from './components/HistoricalSeaLevelRiseExtendedMobile';
-import NewChartComponentMobile from './components/NewChartComponentMobile';
-import HighestElevationChartMobile from './components/HighestElevationChartMobile';
-import LowElevationChartMobile from './components/LowElevationChartMobile';
+import Sec2SeaLevelRiseMobile from './components/Sec2SeaLevelRiseMobile';
+import Sec1SeaLevelHistoryMobile from './components/Sec1SeaLevelHistoryMobile';
+import Sec5DisasterImpactMobile from './components/Sec5DisasterImpactMobile';
+import Sec3ElevationMobile from './components/Sec3ElevationMobile';
+import Sec4PopulationRiskMobile from './components/Sec4PopulationRiskMobile';
 
-import ExtinctSpeciesVizMobile from './components/ExtinctSpeciesVizMobile';
+import OverlayTimelineMobile from './components/OverlayTimelineMobile';
 import LandingPage from '../components/LandingPageMobile';
 
 export default function TestScroll() {
@@ -263,7 +262,7 @@ export default function TestScroll() {
                   display: 'block', // Always visible
                   overflow: 'visible' // Allow scatterplot to extend fully
                 }}>
-        <ExtinctSpeciesVizMobile />
+        <OverlayTimelineMobile />
       </div>
 
       {/* Test Segment Template */}
@@ -327,7 +326,7 @@ export default function TestScroll() {
             boxSizing: 'border-box',
             marginRight: responsive.isMobile() ? '10px' : '0px'
           }}>
-            <HistoricalSeaLevelRiseExtendedMobile />
+            <Sec1SeaLevelHistoryMobile />
           </div>
           
           {/* Caption */}
@@ -423,7 +422,7 @@ export default function TestScroll() {
             marginLeft: responsive.isMobile() ? '10px' : '0px',
             marginRight: responsive.isMobile() ? '10px' : '0px'
           }}>
-            <SeaLevelRiseChartMobile />
+            <Sec2SeaLevelRiseMobile />
           </div>
           
           {/* Caption */}
@@ -496,7 +495,7 @@ export default function TestScroll() {
             marginLeft: responsive.isMobile() ? '10px' : '0px',
             marginRight: responsive.isMobile() ? '10px' : '0px'
           }}>
-            <HighestElevationChartMobile />
+            <Sec3ElevationMobile />
           </div>
           
           {/* Caption */}
@@ -568,7 +567,7 @@ export default function TestScroll() {
             marginLeft: responsive.isMobile() ? '10px' : '0px',
             marginRight: responsive.isMobile() ? '10px' : '0px'
           }}>
-            <LowElevationChartMobile />
+            <Sec4PopulationRiskMobile />
           </div>
           
           {/* Caption */}
@@ -642,7 +641,7 @@ export default function TestScroll() {
               marginRight: '0px',
               marginTop: responsive.isMobile() ? '6rem' : '0px'
           }}>
-            <NewChartComponentMobile />
+            <Sec5DisasterImpactMobile />
           </div>
           
           {/* Caption */}
@@ -768,7 +767,7 @@ export default function TestScroll() {
              zIndex: 20, 
              pointerEvents: 'auto'
            }}>
-             <InteractiveStarGlobeYellow />
+             <MobileSection7StarBackground />
              </div>
 
              {/* Click for Story Button */}

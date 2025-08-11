@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
-const InteractiveStarGlobe = ({ onStarsLoaded, disableControls = false }) => {
+const LandingPageStarBackground = ({ onStarsLoaded, disableControls = false }) => {
   const mountRef = useRef(null);
   const sceneRef = useRef(null);
   const cameraRef = useRef(null);
@@ -580,4 +580,4 @@ const InteractiveStarGlobe = ({ onStarsLoaded, disableControls = false }) => {
   );
 };
 
-export default InteractiveStarGlobe; 
+export default LandingPageStarBackground; 

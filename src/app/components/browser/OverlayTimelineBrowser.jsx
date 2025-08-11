@@ -28,7 +28,7 @@ const parseCSV = (csvText) => {
     });
 };
 
-const ExtinctSpeciesVizBrowser = () => {
+const OverlayTimelineBrowser = () => {
   const [data, setData] = useState([]);
   const [timelineData, setTimelineData] = useState([]); 
   const [isLoading, setIsLoading] = useState(true);
@@ -109,6 +109,6 @@ const ExtinctSpeciesVizBrowser = () => {
   );
 };
 
-export default ExtinctSpeciesVizBrowser; 
+export default OverlayTimelineBrowser; 
 
 

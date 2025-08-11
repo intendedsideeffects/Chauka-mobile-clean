@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect, Suspense } from 'react';
-import InteractiveStarGlobe from '../app/components/InteractiveStarGlobe';
+import LandingPageStarBackground from '../app/components/LandingPageStarBackground';
 
 // Blue Circle Audio Player Component for Mobile
 function BlueCircleAudioPlayerMobile() {
@@ -199,7 +199,7 @@ function LandingPageMobileContent({
     >
              {/* Star Globe as background */}
        <div style={{ position: 'absolute', left: 0, top: 0, width: '100%', height: '100%', zIndex: 1 }}>
-         <InteractiveStarGlobe />
+         <LandingPageStarBackground />
        </div>
       
       {/* Ocean video overlay, only lower 30% visible, pointer-events: none */}

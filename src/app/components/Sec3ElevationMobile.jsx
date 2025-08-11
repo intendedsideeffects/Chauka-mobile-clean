@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import responsive from '../utils/responsive';
 
-const HighestElevationChart = () => {
+const Sec3ElevationMobile = () => {
   const [highestElevationData, setHighestElevationData] = useState([]);
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const chartAreaRef = useRef(null);
@@ -230,4 +230,4 @@ const HighestElevationChart = () => {
   );
 };
 
-export default HighestElevationChart; 
+export default Sec3ElevationMobile; 

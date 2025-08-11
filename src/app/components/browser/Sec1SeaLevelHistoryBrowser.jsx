@@ -1,10 +1,9 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { ComposedChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine, Area } from 'recharts';
-import { responsive } from '../utils/responsive';
+import { ComposedChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine, Area, ReferenceDot } from 'recharts';
 
-const HistoricalSeaLevelRiseExtended = () => {
+const Sec1SeaLevelHistoryBrowser = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [animationStep, setAnimationStep] = useState(0); // 0: historical, 1: satellite + projection
@@ -191,38 +190,37 @@ const HistoricalSeaLevelRiseExtended = () => {
   const projectionPos = calculateProjectionPosition();
 
   return (
-    <div style={{ 
-      width: '100%', 
-      height: '665px', 
-      boxSizing: 'border-box', 
-      pointerEvents: 'auto', 
-      position: 'relative', 
-      overflow: 'visible', // changed back to 'visible' to allow annotation to show
-      marginTop: '-265px', // Align bottom with other charts (665px - 400px = 265px difference)
-      marginLeft: responsive.isMobile() ? '-10px' : '0px',
-      zIndex: 1, // Lower than text content
-      outline: 'none'
-    }}>
-      <div style={{ 
-        position: 'relative', 
-        width: '100%', 
-        height: '100%',
-        border: 'none',
-        outline: 'none'
-      }}>
-        {/* White box to cover top line */}
-        <div style={{
-          position: 'absolute',
-          top: '18px',
-          left: '0px',
-          right: '0px',
-          height: '3px',
-          backgroundColor: 'white',
-          zIndex: 10
-        }} />
+         <div style={{ 
+       width: '100%', 
+       height: '600px', 
+       boxSizing: 'border-box', 
+       pointerEvents: 'auto', 
+       position: 'relative', 
+       overflow: 'visible', // changed back to 'visible' to allow annotation to show
+       marginTop: '-200px', // Adjusted margin to account for new height
+       zIndex: 1, // Lower than title content
+       outline: 'none'
+     }}>
+             <div style={{ 
+         position: 'relative', 
+         width: '100%', 
+         height: '100%',
+         border: 'none',
+         outline: 'none'
+       }}>
+                 {/* White box to cover top line */}
+         <div style={{
+           position: 'absolute',
+           top: '18px',
+           left: '0px',
+           right: '0px',
+           height: '3px',
+           backgroundColor: 'white',
+           zIndex: 1
+         }} />
         
-        <ResponsiveContainer width="100%" height="100%" style={{ paddingLeft: '0px', paddingRight: '0px' }}>
-          <ComposedChart data={data.allData} margin={{ left: 0, right: 0, top: 20, bottom: 20 }}>
+                 <ResponsiveContainer width="100%" height="100%">
+           <ComposedChart data={data.allData} margin={{ left: 0, right: 20, top: 20, bottom: 20 }}>
                          <defs>
                <linearGradient id="areaGradient" x1="0" y1="0" x2="0" y2="1">
                  <stop offset="0%" stopColor="rgba(59, 130, 246, 0.7)" />
@@ -243,17 +241,17 @@ const HistoricalSeaLevelRiseExtended = () => {
               type="number"
               domain={[1000, 2050]}
               ticks={[1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000, 2024, 2050]}
-              tick={{ fontSize: responsive.isMobile() ? 8 : 12, fill: '#666666', fontFamily: 'Helvetica World, Arial, sans-serif' }}
+              tick={{ fontSize: 12, fill: '#666666', fontFamily: 'Helvetica World, Arial, sans-serif' }}
               style={{ fontFamily: 'Helvetica World, Arial, sans-serif' }}
               allowDataOverflow={false}
               scale="linear"
             />
             <YAxis 
               dx={0} 
-              width={responsive.isMobile() ? 30 : 40} 
+              width={40} 
               tickLine={false}
               axisLine={false}
-              tick={{ fontSize: responsive.isMobile() ? 8 : 12, fill: '#666666', fontFamily: 'Helvetica World, Arial, sans-serif' }}
+              tick={{ fontSize: 12, fill: '#666666', fontFamily: 'Helvetica World, Arial, sans-serif' }}
               style={{ fontFamily: 'Helvetica World, Arial, sans-serif' }}
               domain={[-20, 35]}
               ticks={[-20, -10, 0, 10]}
@@ -278,12 +276,11 @@ const HistoricalSeaLevelRiseExtended = () => {
                       border: '1px solid #ccc',
                       borderRadius: '4px',
                       padding: '8px',
-                      fontSize: responsive.isMobile() ? '8px' : '12px',
-                      fontFamily: 'Helvetica World, Arial, sans-serif',
-                      color: '#000000'
+                      fontSize: '12px',
+                      fontFamily: 'Helvetica World, Arial, sans-serif'
                     }}>
-                      <div style={{color: '#000000'}}><strong>Year:</strong> {year}</div>
-                      <div style={{color: '#000000'}}><strong>Sea Level:</strong> {value.toFixed(1)} cm</div>
+                      <div><strong>Year:</strong> {year}</div>
+                      <div><strong>Sea Level:</strong> {value.toFixed(1)} cm</div>
                       {isProjection && <div style={{color: '#0066cc'}}><strong>Projection</strong></div>}
                     </div>
                   );
@@ -365,6 +362,17 @@ const HistoricalSeaLevelRiseExtended = () => {
                 name="projection"
               />
             )}
+            
+            {/* Blue dot at the end of projection line */}
+            {animationStep >= 1 && data.projection && data.projection.length > 0 && (
+              <ReferenceDot
+                x={data.projection[data.projection.length - 1].year}
+                y={data.projection[data.projection.length - 1].value}
+                r={4}
+                fill="#0066cc"
+                stroke="none"
+              />
+            )}
             {/* Zero reference line removed - gridline at y=0 is sufficient */}
           </ComposedChart>
         </ResponsiveContainer>
@@ -380,7 +388,7 @@ const HistoricalSeaLevelRiseExtended = () => {
               color: '#ffffff',
               padding: '8px 12px',
               borderRadius: '4px',
-              fontSize: responsive.isMobile() ? '8px' : '12px',
+              fontSize: '12px',
               fontFamily: 'Helvetica World, Arial, sans-serif',
               zIndex: 10000,
               pointerEvents: 'none',
@@ -392,39 +400,30 @@ const HistoricalSeaLevelRiseExtended = () => {
           </div>
         )}
         
-                 {/* Y-axis label - positioned outside chart area */}
-         <div style={{
-           position: 'absolute',
-           left: responsive.isMobile() ? '30px' : '-269px',
-           top: 'calc(50% - 65px)',
-           transform: 'translateY(-50%)',
-           fontSize: responsive.isMobile() ? '8px' : '14px',
-           fontFamily: 'Helvetica World, Arial, sans-serif',
-           color: '#000000',
-           textAlign: responsive.isMobile() ? 'left' : 'right',
-           pointerEvents: 'none',
-           lineHeight: '1.2',
-           width: responsive.isMobile() ? '180px' : '280px'
-         }}>
-           {responsive.isMobile() ? (
-             <>
-               GLOBAL MEAN SEA<br/>
-               LEVEL (CM)
-             </>
-           ) : (
-             <>
-               GLOBAL MEAN SEA<br/>
-               LEVEL (CM)
-             </>
-           )}
-         </div>
+        {/* Y-axis label - positioned outside chart area */}
+        <div style={{
+          position: 'absolute',
+          left: '-269px',
+          top: 'calc(50% - 32px)',
+          transform: 'translateY(-50%)',
+          fontSize: '14px',
+          fontFamily: 'Helvetica World, Arial, sans-serif',
+          color: '#666666',
+          textAlign: 'right',
+          pointerEvents: 'none',
+          lineHeight: '1.2',
+          width: '280px'
+        }}>
+          GLOBAL MEAN SEA<br/>
+          LEVEL (CM)
+        </div>
         
         {/* X-axis label - positioned outside chart area on the right */}
         <div style={{
           position: 'absolute',
           right: '-5px',
           bottom: '5px',
-          fontSize: responsive.isMobile() ? '8px' : '12px',
+          fontSize: '12px',
           fontFamily: 'Helvetica World, Arial, sans-serif',
           color: '#666666',
           textAlign: 'right',
@@ -440,5 +439,4 @@ const HistoricalSeaLevelRiseExtended = () => {
   );
 };
 
-export default HistoricalSeaLevelRiseExtended;
-
+export default Sec1SeaLevelHistoryBrowser;

@@ -1,8 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import responsive from '../utils/responsive';
 
-const LowElevationChart = () => {
+const Sec4PopulationRiskBrowser = () => {
   const [lowElevationData, setLowElevationData] = useState([]);
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
@@ -63,27 +62,23 @@ const LowElevationChart = () => {
       {/* Y-axis annotation */}
       <div style={{
         position: 'absolute',
-        left: responsive.isMobile() ? '0px' : '10px',
-                 top: 'calc(50% - 181px)',
+        left: '-320px',
+        top: 'calc(50% - 143px)',
         transform: 'translateY(-50%)',
-                 fontSize: responsive.isMobile() ? '8px' : '14px',
+        fontSize: '14px',
         fontFamily: 'Helvetica World, Arial, sans-serif',
         color: '#666666',
-        textAlign: 'left',
+        textAlign: 'right',
         pointerEvents: 'none',
         lineHeight: '1.2',
-        width: responsive.isMobile() ? '120px' : '150px'
+        width: '300px'
       }}>
         POPULATIONS LIVING 0-5M<br/>
         ABOVE SEA LEVEL (%)
       </div>
       
       {/* Chart area with bars */}
-             <div className="flex items-end justify-between h-[350px] relative" style={{ 
-         transition: 'height 1.5s ease',
-         marginLeft: responsive.isMobile() ? '0px' : '0px',
-         marginRight: responsive.isMobile() ? '0px' : '0px'
-       }}>
+      <div className="flex items-end justify-between h-[350px] relative mx-4" style={{ transition: 'height 1.5s ease' }}>
         {/* Horizontal gridlines */}
         {[0, 0.25, 0.5, 0.75, 1.0].map((value, index) => (
           <div 
@@ -106,7 +101,7 @@ const LowElevationChart = () => {
               style={{ 
                 top: `${350 - (value * 280) - 8}px`,
                 left: '-25px',
-                fontSize: responsive.isMobile() ? '8px' : '12px',
+                fontSize: '12px',
                 color: '#666666',
                 fontFamily: 'Helvetica World, Arial, sans-serif'
               }}
@@ -144,27 +139,27 @@ const LowElevationChart = () => {
                 zIndex: isHovered ? 40 : 20
               }}
             >
-                             {/* Bar */}
-               <div className="relative flex justify-center">
-                                   <div 
-                    className="rounded-t-sm relative z-10"
-                    style={{ 
-                      height: '280px',
-                      width: responsive.isMobile() ? '25px' : '60px',
-                      transition: 'height 0.4s ease, background-color 0.05s ease',
-                      background: 'rgba(0, 0, 0, 0.8)'
-                    }}
-                  />
-                 {/* Blue percentage overlay */}
-                                   <div 
-                    className="absolute rounded-t-sm z-20"
-                    style={{ 
-                      height: `${(item.OBS_VALUE / 100) * 280}px`,
-                      width: responsive.isMobile() ? '25px' : '60px',
-                      background: 'rgba(0, 102, 204, 0.9)',
-                      bottom: '0'
-                    }}
-                  />
+              {/* Bar */}
+              <div className="relative flex justify-center">
+                <div 
+                  className="rounded-t-sm relative z-10"
+                  style={{ 
+                    height: '280px',
+                    width: '60px',
+                    transition: 'height 0.4s ease, background-color 0.05s ease',
+                    background: 'rgba(0, 0, 0, 0.9)'
+                  }}
+                />
+                {/* Blue percentage overlay */}
+                <div 
+                  className="absolute rounded-t-sm z-20"
+                  style={{ 
+                    height: `${(item.OBS_VALUE / 100) * 280}px`,
+                    width: '60px',
+                    background: 'rgba(0, 102, 204, 0.9)',
+                    bottom: '0'
+                  }}
+                />
                 {/* Percentage label inside bar at bottom */}
                 <div 
                   className="absolute z-30"
@@ -172,10 +167,10 @@ const LowElevationChart = () => {
                     bottom: '5px',
                     left: '50%',
                     transform: 'translateX(-50%)',
-                    fontSize: responsive.isMobile() ? '8px' : '11px',
+                    fontSize: '11px',
                     color: 'rgba(153, 204, 255, 0.9)',
                     textAlign: 'center',
-                    fontWeight: 'normal'
+                    fontWeight: '500'
                   }}
                 >
                   {Math.round(item.OBS_VALUE)}%
@@ -189,23 +184,19 @@ const LowElevationChart = () => {
       </div>
       
       {/* Country names below x-axis */}
-             <div className="flex items-start justify-between relative mt-2" style={{
-         marginLeft: responsive.isMobile() ? '0px' : '0px',
-         marginRight: responsive.isMobile() ? '0px' : '0px'
-       }}>
+      <div className="flex items-end justify-between relative mx-4 mt-4">
         {lowElevationData.map((item, index) => (
           <div 
             key={index}
             className="flex flex-col items-center flex-1 mx-1"
-                         style={{ 
-               textAlign: 'center',
-               fontSize: responsive.isMobile() ? '8px' : '12px',
-               color: '#000',
-               width: responsive.isMobile() ? '25px' : '60px',
-               lineHeight: '1.0'
-             }}
+            style={{ 
+              textAlign: 'center',
+              fontSize: '12px',
+              color: '#000',
+              width: '60px'
+            }}
           >
-            {item["Pacific Island Countries and territories"].replace('French Polynesia', 'French Poly-nesia').replace('Solomon Islands', 'Solomon Is-lands').replace('Wallis and Futuna', 'Wallis and Fu-tuna').replace('New Caledonia', 'New Cale-donia').replace('Micronesia', 'Micro-nesia')}
+            {item["Pacific Island Countries and territories"]}
           </div>
         ))}
       </div>
@@ -214,4 +205,4 @@ const LowElevationChart = () => {
   );
 };
 
-export default LowElevationChart; 
+export default Sec4PopulationRiskBrowser; 

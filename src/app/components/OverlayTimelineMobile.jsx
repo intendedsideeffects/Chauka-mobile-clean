@@ -32,7 +32,7 @@ const parseCSV = (csvText) => {
     });
 };
 
-const ExtinctSpeciesViz = () => {
+const OverlayTimelineMobile = () => {
   const [data, setData] = useState([]);
   const [timelineData, setTimelineData] = useState([]); 
   const [isLoading, setIsLoading] = useState(true);
@@ -136,7 +136,7 @@ const ExtinctSpeciesViz = () => {
   );
 };
 
-export default ExtinctSpeciesViz; 
+export default OverlayTimelineMobile; 
 
 
 
