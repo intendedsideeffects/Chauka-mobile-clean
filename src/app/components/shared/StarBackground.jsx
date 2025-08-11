@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useMemo } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
@@ -70,8 +70,8 @@ const StarBackground = ({
   const isMobile = platform === 'mobile';
   const isBrowser = platform === 'browser';
 
-  // Configuration based on variant and platform
-  const config = {
+  // Configuration based on variant and platform - memoized to prevent unnecessary re-renders
+  const config = useMemo(() => ({
     background: isLanding ? '#000000' : '#ffffff',
     starColors: isLanding ? {
       brightest: 0xffffff,
@@ -87,7 +87,7 @@ const StarBackground = ({
     interactive: isLanding || (isSection7 && isBrowser),
     rotationSpeed: isLanding ? 0.5 : 0.3,
     starSize: isLanding ? { min: 3.0, max: 16.9 } : { min: 2.0, max: 12.0 }
-  };
+  }), [isLanding, isSection7, isBrowser]);
 
   // Effect to handle controls enable/disable
   useEffect(() => {
@@ -174,7 +174,7 @@ const StarBackground = ({
       }
     };
 
-    // Renderer setup with error handling
+        // Renderer setup with error handling
     let renderer;
     try {
       // Check if we can create a new WebGL context
@@ -283,20 +283,15 @@ const StarBackground = ({
     // Function to load star data
     async function loadStars() {
       try {
-        console.log('Attempting to load stars from /stars.csv');
+        console.log('Loading stars from /stars.csv...');
         const response = await fetch('/stars.csv');
-        console.log('Fetch response status:', response.status);
         
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         
         const text = await response.text();
-        console.log('CSV text loaded, length:', text.length);
-        console.log('First 200 characters:', text.substring(0, 200));
-        
         const rows = text.split('\n').slice(1);
-        console.log('Number of rows (excluding header):', rows.length);
         
         const stars = rows
           .map((row, index) => {
@@ -322,7 +317,10 @@ const StarBackground = ({
           .filter(star => star !== null)
           .sort((a, b) => a.brightness - b.brightness); // Sort by brightness
 
-        console.log('Stars processed successfully:', stars.length);
+        // Cache the stars to prevent future fetches
+        loadStars.hasLoaded = true;
+        loadStars.starCache = stars;
+        
         return stars;
       } catch (error) {
         console.error('Error loading stars:', error);
@@ -333,7 +331,7 @@ const StarBackground = ({
     // Function to create star field
     function createStarField(stars) {
       if (starPointsRef.current) {
-        scene.remove(starPointsRef.current);
+        sceneRef.current.remove(starPointsRef.current);
         starPointsRef.current.geometry.dispose();
         starPointsRef.current.material.dispose();
       }
@@ -381,9 +379,9 @@ const StarBackground = ({
         blending: THREE.AdditiveBlending
       });
 
-      const starPoints = new THREE.Points(geometry, material);
-      scene.add(starPoints);
-      starPointsRef.current = starPoints;
+              const starPoints = new THREE.Points(geometry, material);
+        sceneRef.current.add(starPoints);
+        starPointsRef.current = starPoints;
 
       // Call onStarsLoaded callback if provided
       if (typeof onStarsLoaded === 'function') {
@@ -394,12 +392,10 @@ const StarBackground = ({
     // Initialize function
     async function init() {
       try {
-        console.log('Initializing star field...');
         const stars = await loadStars();
-        console.log('Stars loaded:', stars.length);
         
         if (stars.length > 0) {
-          console.log('Creating star field with', stars.length, 'stars');
+          console.log(`Creating star field with ${stars.length} stars`);
           createStarField(stars);
           setIsLoading(false);
         } else {
@@ -429,10 +425,10 @@ const StarBackground = ({
       rendererRef.current.render(sceneRef.current, cameraRef.current);
     }
 
-    // Start animation
+    // Start animation only once
     animate();
 
-    // Initialize
+    // Initialize only once
     init();
 
     // Event listeners
@@ -461,11 +457,13 @@ const StarBackground = ({
       }
     };
 
+    // Add event listeners only once
     window.addEventListener('resize', handleResize);
     document.addEventListener('visibilitychange', handleVisibilityChange);
 
     // Cleanup function
     return () => {
+      // Remove event listeners
       window.removeEventListener('resize', handleResize);
       document.removeEventListener('visibilitychange', handleVisibilityChange);
       
@@ -499,7 +497,7 @@ const StarBackground = ({
       // Unregister this context from the manager
       webGLManager.unregisterContext(instanceId.current);
     };
-  }, [variant, platform, disableControls, onStarsLoaded, config]);
+  }, [variant, platform, disableControls]); // Removed onStarsLoaded and config from dependencies
 
   // Fallback for WebGL not supported
   if (showFallback) {
